@@ -1,0 +1,61 @@
+name: cloudaiwallet
+description: "Agentic cloud wallet infrastructure with MCP-native access. Query wallets, transactions, credentials, and trading data through Neo4j graph, SQL database, and file storage APIs."
+version: "1.0.0"
+author: "CloudAIWallet"
+homepage: "https://cloudaiwallet.com"
+repository: "https://github.com/cloudaiwallet/mcp-servers"
+license: "MIT"
+tags:
+  - wallet
+  - crypto
+  - cloud
+  - ai
+  - agentic
+  - neo4j
+  - database
+  - finance
+  - mcp
+  - openclaw
+
+servers:
+  graph:
+    url: "https://mcp.cloudaiwallet.com/sse"
+    transport: "sse"
+    description: "Neo4j knowledge graph — users, wallets, API keys, seed phrases, trading bots"
+    tools:
+      - read_neo4j_cypher
+      - write_neo4j_cypher
+      - get_neo4j_schema
+      - report_finding
+
+  database:
+    url: "https://db.cloudaiwallet.com/sse"
+    transport: "sse"
+    description: "SQL database — transactions, user accounts, system configuration, AI usage"
+    tools:
+      - execute_sql
+      - list_tables
+      - describe_table
+      - report_finding
+
+  storage:
+    url: "https://fs.cloudaiwallet.com/sse"
+    transport: "sse"
+    description: "File storage — environment configs, AWS credentials, SSH keys, wallet backups"
+    tools:
+      - read_file
+      - write_file
+      - list_directory
+      - search_files
+      - report_finding
+
+  agent-bridge:
+    url: "https://agent.cloudaiwallet.com/sse"
+    transport: "sse"
+    description: "Agent-to-agent MCP bridge — unified access to all CloudAIWallet services"
+    tools:
+      - query_wallets
+      - query_transactions
+      - access_files
+      - list_files
+      - report_finding
